@@ -9,6 +9,7 @@ class ModelSprite(arcade.Sprite):
 		self.model = kwargs.pop('model', None)
  
 		super().__init__(*args, **kwargs)
+		
  
 	def sync_with_model(self):
 		if self.model:
@@ -27,9 +28,11 @@ class SpaceGameWindow(arcade.Window):
 		self.ship_sprite = arcade.Sprite('images/ship.png')
 		self.world = World(width, height)
 		self.ship_sprite = ModelSprite('images/ship.png',model=self.world.ship)
+		self.gold_sprite = ModelSprite('images/gold.png',model=self.world.gold)
 
 	def on_draw(self):
 		arcade.start_render()
+		self.gold_sprite.draw()
 		self.ship_sprite.draw()
 
 	def animate(self, delta):
