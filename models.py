@@ -8,12 +8,15 @@ class Ship:
 		self.x = x
 		self.y = y
 		self.direction = Ship.DIR_VERTICAL
+		self.angle = 0
 
 	def switch_direction(self):
 		if self.direction == Ship.DIR_HORIZONTAL:
 			self.direction = Ship.DIR_VERTICAL
+			self.angle = 0
 		else:
 			self.direction = Ship.DIR_HORIZONTAL
+			self.angle = -90
  
 	def animate(self, delta):
 		if self.direction == Ship.DIR_VERTICAL:
