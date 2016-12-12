@@ -1,22 +1,22 @@
 import arcade
-from models import Ship, World
+from models import World, Ship
  
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
 
 class ModelSprite(arcade.Sprite):
-    def __init__(self, *args, **kwargs):
-    	self.model = kwargs.pop('model', None)
+	def __init__(self, *args, **kwargs):
+		self.model = kwargs.pop('model', None)
  
-    	super().__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
  
-    def sync_with_model(self):
-    	if self.model:
-        	self.set_position(self.model.x, self.model.y)
+	def sync_with_model(self):
+		if self.model:
+			self.set_position(self.model.x, self.model.y)
  
-    def draw(self):
-    	self.sync_with_model()
-    	super().draw()
+	def draw(self):
+		self.sync_with_model()
+		super().draw()
  
 class SpaceGameWindow(arcade.Window):
 	def __init__(self, width, height):
@@ -32,6 +32,9 @@ class SpaceGameWindow(arcade.Window):
 
 	def animate(self, delta):
 		self.world.animate(delta)
+
+	def on_key_press(self, key, key_modifiers):
+		self.world.on_key_press(key, key_modifiers)
 		
 
  
